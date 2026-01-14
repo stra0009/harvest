@@ -25,7 +25,7 @@ def run
     # Fetch last 100 messages (limit for simplicity, or implement pagination for time-based)
     # Using REST API directly avoids Gateway connection overhead
     begin
-      msgs = JSON.parse(Discordrb::API::Channel.messages(DISCORD_TOKEN, channel_id, 50))
+      msgs = JSON.parse(Discordrb::API::Channel.messages("Bot #{DISCORD_TOKEN}", channel_id, 50))
       
       # Filter for messages from last 24 hours
       one_day_ago = (DateTime.now - 1).to_s
@@ -115,11 +115,11 @@ def run
   end
 
   # Send summary message first
-  Discordrb::API::Channel.create_message(DISCORD_TOKEN, TARGET_CHANNEL_ID, "アナタの先輩、エースです。\n\n昨日のメッセージを確認して **#{tasks.size}件** のタスク候補をまとめておきました。", false, nil)
+  Discordrb::API::Channel.create_message("Bot #{DISCORD_TOKEN}", TARGET_CHANNEL_ID, "アナタの先輩、エースです。\n\n昨日のメッセージを確認して **#{tasks.size}件** のタスク候補をまとめておきました。", false, nil)
   
   # Send embeds (Discord allows 10 embeds per message, but safe to send 1 by 1 or batch)
   embeds.each do |embed|
-    Discordrb::API::Channel.create_message(DISCORD_TOKEN, TARGET_CHANNEL_ID, nil, false, embed)
+    Discordrb::API::Channel.create_message("Bot #{DISCORD_TOKEN}", TARGET_CHANNEL_ID, nil, false, embed)
     sleep 0.5 # Rate limit safety
   end
   
