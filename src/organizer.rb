@@ -89,7 +89,7 @@ def main_logic
   PROMPT
 
   begin
-    uri = URI("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite-preview-02-05:generateContent?key=#{GEMINI_API_KEY}")
+    uri = URI("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=#{GEMINI_API_KEY}")
     req = Net::HTTP::Post.new(uri)
     req['Content-Type'] = 'application/json'
     req.body = {
