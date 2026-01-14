@@ -1,8 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.8.8)
-      public_suffix (>= 2.0.2, < 8.0)
     base64 (0.3.0)
     discordrb (3.7.2)
       base64 (~> 0.2)
@@ -15,19 +13,13 @@ GEM
       rest-client (>= 2.0.0)
     domain_name (0.6.20240107)
     dotenv (3.2.0)
-    ethon (0.15.0)
-      ffi (>= 1.15.0)
     event_emitter (0.2.6)
-    event_stream_parser (1.0.0)
     faraday (2.14.0)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
-    faraday-typhoeus (1.1.0)
-      faraday (~> 2.0)
-      typhoeus (~> 1.4)
     ffi (1.17.3)
     ffi (1.17.3-aarch64-linux-gnu)
     ffi (1.17.3-aarch64-linux-musl)
@@ -39,56 +31,26 @@ GEM
     ffi (1.17.3-x86_64-darwin)
     ffi (1.17.3-x86_64-linux-gnu)
     ffi (1.17.3-x86_64-linux-musl)
-    gemini-ai (4.3.0)
-      event_stream_parser (~> 1.0)
-      faraday (~> 2.13, >= 2.13.2)
-      faraday-typhoeus (~> 1.1)
-      googleauth (~> 1.8)
-      typhoeus (~> 1.4, >= 1.4.1)
-    google-cloud-env (2.3.1)
-      base64 (~> 0.2)
-      faraday (>= 1.0, < 3.a)
-    google-logging-utils (0.2.0)
-    googleauth (1.16.0)
-      faraday (>= 1.0, < 3.a)
-      google-cloud-env (~> 2.2)
-      google-logging-utils (~> 0.1)
-      jwt (>= 1.4, < 4.0)
-      multi_json (~> 1.11)
-      os (>= 0.9, < 2.0)
-      signet (>= 0.16, < 2.a)
     http-accept (1.7.0)
     http-cookie (1.1.0)
       domain_name (~> 0.5)
     json (2.18.0)
-    jwt (3.1.2)
-      base64
     logger (1.7.0)
     mime-types (3.7.0)
       logger
       mime-types-data (~> 3.2025, >= 3.2025.0507)
     mime-types-data (3.2026.0113)
-    multi_json (1.19.1)
     mutex_m (0.3.0)
     net-http (0.9.1)
       uri (>= 0.11.1)
     netrc (0.11.0)
     opus-ruby (1.0.1)
       ffi
-    os (1.1.4)
-    public_suffix (7.0.2)
     rest-client (2.1.0)
       http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    signet (0.21.0)
-      addressable (~> 2.8)
-      faraday (>= 0.17.5, < 3.a)
-      jwt (>= 1.5, < 4.0)
-      multi_json (~> 1.10)
-    typhoeus (1.5.0)
-      ethon (>= 0.9.0, < 0.16.0)
     uri (1.1.1)
     websocket (1.2.11)
     websocket-client-simple (0.9.0)
@@ -114,21 +76,16 @@ DEPENDENCIES
   discordrb
   dotenv
   faraday
-  gemini-ai
 
 CHECKSUMS
-  addressable (2.8.8) sha256=7c13b8f9536cf6364c03b9d417c19986019e28f7c00ac8132da4eb0fe393b057
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
   discordrb (3.7.2) sha256=a9a32f485e639a1e63313479b40a7b49100b1b50eb74ed17b8bd413e01a3b46f
   discordrb-webhooks (3.7.2) sha256=154d8c3a31aaeb6d580456b9624e0486c28812dcc19b51d91c43a6c5600112ea
   domain_name (0.6.20240107) sha256=5f693b2215708476517479bf2b3802e49068ad82167bcd2286f899536a17d933
   dotenv (3.2.0) sha256=e375b83121ea7ca4ce20f214740076129ab8514cd81378161f11c03853fe619d
-  ethon (0.15.0) sha256=0809805a035bc10f54162ca99f15ded49e428e0488bcfe1c08c821e18261a74d
   event_emitter (0.2.6) sha256=c72697bd5cce9d36594be1972c17f1c9a573236f44303a4d1d548080364e1391
-  event_stream_parser (1.0.0) sha256=a2683bab70126286f8184dc88f7968ffc4028f813161fb073ec90d171f7de3c8
   faraday (2.14.0) sha256=8699cfe5d97e55268f2596f9a9d5a43736808a943714e3d9a53e6110593941cd
   faraday-net_http (3.4.2) sha256=f147758260d3526939bf57ecf911682f94926a3666502e24c69992765875906c
-  faraday-typhoeus (1.1.0) sha256=24c6147c213818dde3ebc50ae47ab92f9a7e554903aa362707126f749c6890e7
   ffi (1.17.3) sha256=0e9f39f7bb3934f77ad6feab49662be77e87eedcdeb2a3f5c0234c2938563d4c
   ffi (1.17.3-aarch64-linux-gnu) sha256=28ad573df26560f0aedd8a90c3371279a0b2bd0b4e834b16a2baa10bd7a97068
   ffi (1.17.3-aarch64-linux-musl) sha256=020b33b76775b1abacc3b7d86b287cef3251f66d747092deec592c7f5df764b2
@@ -140,27 +97,17 @@ CHECKSUMS
   ffi (1.17.3-x86_64-darwin) sha256=1f211811eb5cfaa25998322cdd92ab104bfbd26d1c4c08471599c511f2c00bb5
   ffi (1.17.3-x86_64-linux-gnu) sha256=3746b01f677aae7b16dc1acb7cb3cc17b3e35bdae7676a3f568153fb0e2c887f
   ffi (1.17.3-x86_64-linux-musl) sha256=086b221c3a68320b7564066f46fed23449a44f7a1935f1fe5a245bd89d9aea56
-  gemini-ai (4.3.0) sha256=bbe69d541b994622d876dffcce397a9f60a78c60572cb95f2f257bf9172db6be
-  google-cloud-env (2.3.1) sha256=0faac01eb27be78c2591d64433663b1a114f8f7af55a4f819755426cac9178e7
-  google-logging-utils (0.2.0) sha256=675462b4ea5affa825a3442694ca2d75d0069455a1d0956127207498fca3df7b
-  googleauth (1.16.0) sha256=1e7b5c2ee7edc6a0f5a4a4312c579b3822dc0be2679d6d09ca19d8c7ca5bd5f1
   http-accept (1.7.0) sha256=c626860682bfbb3b46462f8c39cd470fd7b0584f61b3cc9df5b2e9eb9972a126
   http-cookie (1.1.0) sha256=38a5e60d1527eebc396831b8c4b9455440509881219273a6c99943d29eadbb19
   json (2.18.0) sha256=b10506aee4183f5cf49e0efc48073d7b75843ce3782c68dbeb763351c08fd505
-  jwt (3.1.2) sha256=af6991f19a6bb4060d618d9add7a66f0eeb005ac0bc017cd01f63b42e122d535
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   mime-types (3.7.0) sha256=dcebf61c246f08e15a4de34e386ebe8233791e868564a470c3fe77c00eed5e56
   mime-types-data (3.2026.0113) sha256=8c88fa7b1af91c87098f666b7ffbd4794799a71c05765be2c1f6df337d41b04c
-  multi_json (1.19.1) sha256=7aefeff8f2c854bf739931a238e4aea64592845e0c0395c8a7d2eea7fdd631b7
   mutex_m (0.3.0) sha256=cfcb04ac16b69c4813777022fdceda24e9f798e48092a2b817eb4c0a782b0751
   net-http (0.9.1) sha256=25ba0b67c63e89df626ed8fac771d0ad24ad151a858af2cc8e6a716ca4336996
   netrc (0.11.0) sha256=de1ce33da8c99ab1d97871726cba75151113f117146becbe45aa85cb3dabee3f
   opus-ruby (1.0.1) sha256=8dc808d6773a488469374cccf252808b2ad7bc7e00229a319832f0e09012ce53
-  os (1.1.4) sha256=57816d6a334e7bd6aed048f4b0308226c5fb027433b67d90a9ab435f35108d3f
-  public_suffix (7.0.2) sha256=9114090c8e4e7135c1fd0e7acfea33afaab38101884320c65aaa0ffb8e26a857
   rest-client (2.1.0) sha256=35a6400bdb14fae28596618e312776c158f7ebbb0ccad752ff4fa142bf2747e3
-  signet (0.21.0) sha256=d617e9fbf24928280d39dcfefba9a0372d1c38187ffffd0a9283957a10a8cd5b
-  typhoeus (1.5.0) sha256=120b67ed1ef515e6c0e938176db880f15b0916f038e78ce2a66290f3f1de3e3b
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
   websocket (1.2.11) sha256=b7e7a74e2410b5e85c25858b26b3322f29161e300935f70a0e0d3c35e0462737
   websocket-client-simple (0.9.0) sha256=f9a37c5e4922b35a711e21e6d73ed1e25892efa47d183203ab2f5beb4e563109
