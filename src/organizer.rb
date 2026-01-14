@@ -2,7 +2,8 @@ require 'bundler/setup'
 Bundler.require(:default)
 
 require 'discordrb'
-require 'gemini-ai'
+require 'net/http'
+
 require 'dotenv/load'
 require 'json'
 require 'date'
@@ -63,10 +64,9 @@ def main_logic
   puts "Collected #{all_messages.size} messages. Sending to Gemini..."
 
   # 2. Analyze with Gemini
-  client = GeminiAi::Client.new(api_key: GEMINI_API_KEY)
-  
+  # 2. Analyze with Gemini (REST API Direct)
   prompt = <<~PROMPT
-    You are a helpful project manager. 
+    あなたは優秀な先輩社員「エース」です。
     以下はDiscordチームの雑談や殴り書きのログです。
     ここから明確な「タスク」「アイデア」「バグ報告」を抽出し、リスト化してください。
     
@@ -89,11 +89,23 @@ def main_logic
   PROMPT
 
   begin
-    result = client.generate_content({
-      contents: [{ role: 'user', parts: [{ text: prompt }] }],
-      model: 'gemini-2.0-flash-lite'
-    })
+    uri = URI("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite-preview-02-05:generateContent?key=#{GEMINI_API_KEY}")
+    req = Net::HTTP::Post.new(uri)
+    req['Content-Type'] = 'application/json'
+    req.body = {
+      contents: [{ parts: [{ text: prompt }] }]
+    }.to_json
+
+    res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(req)
+    end
+
+    result = JSON.parse(res.body)
     
+    if result['error']
+      raise "Gemini API Error: #{result['error']['message']}"
+    end
+
     # Extract JSON from response
     raw_response = result['candidates'][0]['content']['parts'][0]['text']
     # Clean up markdown code blocks if present
