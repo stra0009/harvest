@@ -129,22 +129,16 @@ def main_logic
   # Build the report content
   header = "アナタの先輩、エースです。\n昨日のメッセージを確認して **#{tasks.size}件** のタスク候補をまとめておきました。\n\n"
   
-  report_body = ""
+  report_body = "```text\n"
   tasks.each do |task|
-    priority_icon = case task['priority']
-                    when '高', 'High' then '🔴'
-                    when '中', 'Medium' then '🟡'
-                    else '🔵'
-                    end
-    
-    report_body += "### #{priority_icon} #{task['title']}\n"
-    report_body += "#{task['description']}\n"
-    if task['original_context']
-      # Quote the original context slightly
-      report_body += "> #{task['original_context'].to_s.gsub("\n", " ")}\n"
-    end
+    report_body += "・#{task['title']}\n"
+    report_body += "  #{task['description']}\n"
+    # if task['original_context']
+    #   report_body += "  (元: #{task['original_context'].to_s.gsub("\n", " ")})\n"
+    # end
     report_body += "\n"
   end
+  report_body += "```"
 
   full_message = header + report_body
   
