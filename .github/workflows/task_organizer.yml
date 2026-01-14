@@ -1,0 +1,27 @@
+name: Discord Scribble Task Organizer
+
+on:
+  schedule:
+    - cron: '0 9 * * *' # Runs daily at 09:00 UTC
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  organize_tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+
+      - name: Run Organizer Script
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SOURCE_CHANNEL_IDS: ${{ secrets.SOURCE_CHANNEL_IDS }}
+          TARGET_CHANNEL_ID: ${{ secrets.TARGET_CHANNEL_ID }}
+        run: bundle exec ruby src/organizer.rb
