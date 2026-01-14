@@ -1,3 +1,6 @@
+require 'bundler/setup'
+Bundler.require(:default)
+
 require 'discordrb'
 require 'gemini-ai'
 require 'dotenv/load'
@@ -12,6 +15,16 @@ TARGET_CHANNEL_ID = ENV['TARGET_CHANNEL_ID']
 
 # Initialize Clients
 def run
+  begin
+    main_logic
+  rescue => e
+    warn "CRITICAL ERROR: #{e.message}"
+    warn e.backtrace.join("\n")
+    exit(1)
+  end
+end
+
+def main_logic
   if !DISCORD_TOKEN || !GEMINI_API_KEY || SOURCE_CHANNELS.empty? || !TARGET_CHANNEL_ID
     puts "Error: Missing environment variables."
     exit(1)
